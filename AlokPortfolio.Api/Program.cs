@@ -84,7 +84,7 @@ builder.Services.AddCors(options =>
         policy.WithOrigins(
             "http://localhost:4200",
             "http://localhost:3000",
-            "https://fullstackportfolio-puwgjaqtx-alok-pratihasts-projects.vercel.app"
+            "https://fullstackportfolio-9fs2.vercel.app"
         )
         .AllowAnyHeader()
         .AllowAnyMethod();
