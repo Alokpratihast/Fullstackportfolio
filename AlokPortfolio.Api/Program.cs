@@ -24,12 +24,12 @@ builder.Logging.AddConsole();
 // Add services to the container.
 builder.Services.AddControllers();
 
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(
+    options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
 
 
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
