@@ -1,0 +1,63 @@
+<div class="container">
+
+  <div class="header">
+    <h2>Skills</h2>
+
+    <a routerLink="/skills/add" class="add-btn">
+      + Add Skill
+    </a>
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Percentage</th>
+        <th>Display Order</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let skill of skills">
+
+        <td>{{ skill.name }}</td>
+
+        <td>{{ skill.category }}</td>
+
+        <td>{{ skill.percentage }}%</td>
+
+        <td>{{ skill.displayOrder }}</td>
+
+        <td>
+
+          <a [routerLink]="['/skills/edit', skill.id]">
+            Edit
+          </a>
+
+          |
+
+          <button
+            type="button"
+            (click)="deleteSkill(skill.id)">
+            Delete
+          </button>
+
+        </td>
+
+      </tr>
+
+      <tr *ngIf="skills.length === 0">
+        <td colspan="5" style="text-align:center;">
+          No skills found.
+        </td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>

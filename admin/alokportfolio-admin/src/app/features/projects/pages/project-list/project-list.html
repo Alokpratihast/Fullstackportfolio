@@ -1,0 +1,88 @@
+<div class="page-header">
+
+  <h1>Projects</h1>
+
+  <button
+    class="add-btn"
+    routerLink="/projects/add">
+    + Add Project
+  </button>
+
+</div>
+
+@if (isLoading) {
+
+  <p>Loading...</p>
+
+}
+
+@else if (errorMessage) {
+
+  <p>{{ errorMessage }}</p>
+
+}
+
+@else if (projects.length === 0) {
+
+  <p>No Projects Found.</p>
+
+}
+
+@else {
+
+  <div class="projects-grid">
+
+    @for (project of projects; track project.id) {
+
+      <div class="project-card">
+
+        <div class="card-header">
+
+          <h3>{{ project.title }}</h3>
+
+          @if (project.isFeatured) {
+
+            <span class="badge">
+              Featured
+            </span>
+
+          }
+
+        </div>
+
+        <p class="description">
+          {{ project.description }}
+        </p>
+
+        <p>
+          <strong>Technologies:</strong>
+          {{ project.technologies }}
+        </p>
+
+        <div class="actions">
+
+          <button
+            class="edit-btn"
+            [routerLink]="['/projects/edit', project.id]">
+
+            Edit
+
+          </button>
+
+          <button
+            class="delete-btn"
+            (click)="deleteProject(project.id)">
+
+            Delete
+
+          </button>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+}

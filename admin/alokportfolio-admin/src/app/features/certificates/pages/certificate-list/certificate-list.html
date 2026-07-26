@@ -1,0 +1,82 @@
+<div class="container">
+
+  <div class="header">
+
+    <h2>Certificates</h2>
+
+    <a
+      routerLink="/certificates/add"
+      class="add-btn">
+
+      + Add Certificate
+
+    </a>
+
+  </div>
+
+  <table>
+
+    <thead>
+
+      <tr>
+
+        <th>Title</th>
+        <th>Issuer</th>
+        <th>Issue Date</th>
+        <th>Credential ID</th>
+        <th>Actions</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let certificate of certificates">
+
+        <td>{{ certificate.title }}</td>
+
+        <td>{{ certificate.issuer }}</td>
+
+        <td>{{ certificate.issueDate | date:'dd MMM yyyy' }}</td>
+
+        <td>{{ certificate.credentialId }}</td>
+
+        <td>
+
+          <a
+            [routerLink]="['/certificates/edit', certificate.id]">
+
+            Edit
+
+          </a>
+
+          |
+
+          <button
+            type="button"
+            (click)="deleteCertificate(certificate.id)">
+
+            Delete
+
+          </button>
+
+        </td>
+
+      </tr>
+
+      <tr *ngIf="certificates.length === 0" class="empty-row">
+
+        <td colspan="5">
+
+          No certificates found.
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>

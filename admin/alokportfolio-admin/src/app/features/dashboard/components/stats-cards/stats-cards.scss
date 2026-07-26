@@ -1,0 +1,51 @@
+.stats-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 20px;
+
+}
+
+.card {
+
+  padding: 20px;
+
+  text-align: center;
+
+  transition: .3s;
+
+}
+
+.card:hover {
+
+  transform: translateY(-5px);
+
+}
+
+mat-icon {
+
+  font-size: 40px;
+
+  width: 40px;
+
+  height: 40px;
+
+  color: #1976d2;
+
+}
+
+h2 {
+
+  font-size: 32px;
+
+  margin-top: 10px;
+
+}
+
+h3 {
+
+  margin-top: 15px;
+
+}

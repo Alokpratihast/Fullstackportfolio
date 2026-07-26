@@ -1,0 +1,58 @@
+<div class="stats-grid">
+
+  <mat-card class="card">
+    <mat-icon>folder</mat-icon>
+    <h3>Projects</h3>
+    <h2>{{ summary.totalProjects }}</h2>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-icon>code</mat-icon>
+    <h3>Skills</h3>
+    <h2>{{ summary.totalSkills }}</h2>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-icon>work</mat-icon>
+    <h3>Experience</h3>
+    <h2>{{ summary.totalExperiences }}</h2>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-icon>school</mat-icon>
+    <h3>Education</h3>
+    <h2>{{ summary.totalEducations }}</h2>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-icon>workspace_premium</mat-icon>
+    <h3>Certificates</h3>
+    <h2>{{ summary.totalCertificates }}</h2>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-icon>mail</mat-icon>
+    <h3>Messages</h3>
+    <h2>{{ summary.totalMessages }}</h2>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-icon>share</mat-icon>
+    <h3>Social Links</h3>
+    <h2>{{ summary.totalSocialLinks }}</h2>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-icon>
+      {{ summary.hasActiveResume ? 'check_circle' : 'cancel' }}
+    </mat-icon>
+
+    <h3>Resume</h3>
+
+    <h2>
+      {{ summary.hasActiveResume ? 'Active' : 'Missing' }}
+    </h2>
+
+  </mat-card>
+
+</div>

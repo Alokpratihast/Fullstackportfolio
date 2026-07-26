@@ -1,0 +1,65 @@
+<div class="container">
+
+  <div class="form-card">
+
+    <h2>Add Certificate</h2>
+
+    <form
+      [formGroup]="certificateForm"
+      (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Title</label>
+        <input
+          type="text"
+          formControlName="title">
+      </div>
+
+      <div class="form-group">
+        <label>Issuer</label>
+        <input
+          type="text"
+          formControlName="issuer">
+      </div>
+
+      <div class="form-group">
+        <label>Issue Date</label>
+        <input
+          type="date"
+          formControlName="issueDate">
+      </div>
+
+      <div class="form-group">
+        <label>Credential ID</label>
+        <input
+          type="text"
+          formControlName="credentialId">
+      </div>
+
+      <div class="form-group">
+        <label>Credential URL</label>
+        <input
+          type="url"
+          formControlName="credentialUrl">
+      </div>
+
+      <div class="form-group">
+        <label>Display Order</label>
+        <input
+          type="number"
+          formControlName="displayOrder">
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="isSubmitting">
+
+        {{ isSubmitting ? 'Saving...' : 'Add Certificate' }}
+
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

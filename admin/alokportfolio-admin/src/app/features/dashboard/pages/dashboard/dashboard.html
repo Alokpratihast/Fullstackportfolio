@@ -1,0 +1,29 @@
+<h1>Dashboard</h1>
+
+@if (isLoading) {
+
+  <p>Loading...</p>
+
+} @else if (errorMessage) {
+
+  <p>{{ errorMessage }}</p>
+
+} @else if (dashboard) {
+
+  <app-stats-cards
+    [summary]="dashboard.summary">
+  </app-stats-cards>
+
+  <div class="dashboard-grid">
+
+    <app-recent-messages
+      [messages]="dashboard.recentMessages">
+    </app-recent-messages>
+
+    <app-recent-projects
+      [projects]="dashboard.recentProjects">
+    </app-recent-projects>
+
+  </div>
+
+}

@@ -1,0 +1,35 @@
+# Visual Studio
+.vs/
+.vscode/
+
+# ASP.NET
+**/bin/
+**/obj/
+
+# Next.js
+**/.next/
+**/node_modules/
+**/out/
+
+# Angular
+**/dist/
+**/.angular/
+**/.cache/
+
+# Environment
+**/.env
+**/.env.*
+.env
+.env.*
+
+# Logs
+*.log
+*.pid
+backend-e2e*
+
+# IDE
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store

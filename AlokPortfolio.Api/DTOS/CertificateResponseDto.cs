@@ -1,0 +1,20 @@
+﻿namespace AlokPortfolio.Api.DTOs;
+
+public class CertificateResponseDto
+{
+    public int Id { get; set; }
+
+    public string Title { get; set; } = string.Empty;
+
+    public string Issuer { get; set; } = string.Empty;
+
+    public DateTime IssueDate { get; set; }
+
+    public string CredentialId { get; set; } = string.Empty;
+
+    public string CredentialUrl { get; set; } = string.Empty;
+
+    public int DisplayOrder { get; set; }
+
+    public DateTime CreatedAt { get; set; }
+}

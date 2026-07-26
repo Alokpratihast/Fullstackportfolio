@@ -1,0 +1,69 @@
+<mat-card>
+
+    <mat-card-header>
+
+        <mat-card-title>
+
+            Recent Messages
+
+        </mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+        @if(messages.length === 0){
+
+            <div class="empty-state">
+
+                <mat-icon>mail_outline</mat-icon>
+
+                <p>No messages found.</p>
+
+            </div>
+
+        }
+
+        @else {
+
+            @for(message of messages; track message.id){
+
+                <div class="message">
+
+                    <div class="message-header">
+
+                        <h3>{{message.name}}</h3>
+
+                        @if(!message.isRead){
+
+                            <span class="badge">
+
+                                New
+
+                            </span>
+
+                        }
+
+                    </div>
+
+                    <p>{{message.email}}</p>
+
+                    <strong>{{message.subject}}</strong>
+
+                    <small>
+
+                        {{message.createdAt | date:'medium'}}
+
+                    </small>
+
+                </div>
+
+                <mat-divider></mat-divider>
+
+            }
+
+        }
+
+    </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,67 @@
+mat-card{
+
+    height:100%;
+
+}
+
+.message{
+
+    padding:16px 0;
+
+}
+
+.message-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.badge{
+
+    background:#1976d2;
+
+    color:#fff;
+
+    padding:4px 10px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+}
+
+small{
+
+    color:#666;
+
+}
+
+.empty-state{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:40px;
+
+    color:#888;
+
+}
+
+.empty-state mat-icon{
+
+    font-size:50px;
+
+    width:50px;
+
+    height:50px;
+
+}

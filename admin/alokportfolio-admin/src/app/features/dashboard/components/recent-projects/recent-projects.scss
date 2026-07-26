@@ -1,0 +1,30 @@
+mat-card {
+  height: 100%;
+}
+
+.project {
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.project:last-child {
+  border-bottom: none;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #888;
+}
+
+.empty-state mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+}

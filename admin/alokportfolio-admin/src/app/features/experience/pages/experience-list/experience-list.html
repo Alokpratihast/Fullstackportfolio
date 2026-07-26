@@ -1,0 +1,90 @@
+<div class="container">
+
+  <div class="header">
+
+    <h2>Experience</h2>
+
+    <a
+      routerLink="/experience/add"
+      class="add-btn">
+
+      + Add Experience
+
+    </a>
+
+  </div>
+
+  <table>
+
+    <thead>
+
+      <tr>
+
+        <th>Company</th>
+
+        <th>Job Title</th>
+
+        <th>Location</th>
+
+        <th>Current</th>
+
+        <th>Actions</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let experience of experiences">
+
+        <td>{{ experience.companyName }}</td>
+
+        <td>{{ experience.jobTitle }}</td>
+
+        <td>{{ experience.location }}</td>
+
+        <td>
+
+          {{ experience.isCurrentJob ? 'Yes' : 'No' }}
+
+        </td>
+
+        <td>
+
+          <a
+            [routerLink]="['/experience/edit', experience.id]">
+
+            Edit
+
+          </a>
+
+          |
+
+          <button
+            type="button"
+            (click)="deleteExperience(experience.id)">
+
+            Delete
+
+          </button>
+
+        </td>
+
+      </tr>
+
+      <tr *ngIf="experiences.length === 0">
+
+        <td colspan="5">
+
+          No experience records found.
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>

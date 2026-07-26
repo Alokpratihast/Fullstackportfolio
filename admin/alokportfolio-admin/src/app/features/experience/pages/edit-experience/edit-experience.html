@@ -1,0 +1,77 @@
+<div class="container">
+
+  <div class="form-card">
+
+    <h2>Edit Experience</h2>
+
+    <form [formGroup]="experienceForm"
+          (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Company Name</label>
+        <input type="text" formControlName="companyName">
+      </div>
+
+      <div class="form-group">
+        <label>Job Title</label>
+        <input type="text" formControlName="jobTitle">
+      </div>
+
+      <div class="form-group">
+        <label>Employment Type</label>
+        <input type="text" formControlName="employmentType">
+      </div>
+
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" formControlName="location">
+      </div>
+
+      <div class="form-group">
+        <label>Start Date</label>
+        <input type="date" formControlName="startDate">
+      </div>
+
+      <div class="form-group">
+        <label>End Date</label>
+        <input type="date" formControlName="endDate">
+      </div>
+
+      <div class="form-group checkbox">
+        <label>
+          <input
+            type="checkbox"
+            formControlName="isCurrentJob">
+
+          Current Job
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea
+          rows="5"
+          formControlName="description">
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Display Order</label>
+        <input
+          type="number"
+          formControlName="displayOrder">
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="isSubmitting">
+
+        {{ isSubmitting ? 'Updating...' : 'Update Experience' }}
+
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

@@ -1,0 +1,132 @@
+<div class="container">
+
+  <div class="form-card">
+
+    <h2>Add New Project</h2>
+
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+
+      <!-- Title -->
+      <div class="form-group">
+        <label>Project Title</label>
+
+        <input
+          type="text"
+          formControlName="title"
+          placeholder="Enter project title">
+
+        @if(projectForm.controls.title.touched &&
+        projectForm.controls.title.invalid){
+
+        <small class="error">
+          Project title is required.
+        </small>
+
+        }
+
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+
+        <label>Description</label>
+
+        <textarea
+          rows="5"
+          formControlName="description"
+          placeholder="Enter description">
+        </textarea>
+
+        @if(projectForm.controls.description.touched &&
+        projectForm.controls.description.invalid){
+
+        <small class="error">
+          Description is required.
+        </small>
+
+        }
+
+      </div>
+
+      <!-- Technologies -->
+
+      <div class="form-group">
+
+        <label>Technologies</label>
+
+        <input
+          type="text"
+          formControlName="technologies"
+          placeholder="Angular, .NET, SQL Server">
+
+      </div>
+
+      <!-- Github -->
+
+      <div class="form-group">
+
+        <label>Github URL</label>
+
+        <input
+          type="url"
+          formControlName="githubUrl"
+          placeholder="https://github.com/...">
+
+      </div>
+
+      <!-- Live URL -->
+
+      <div class="form-group">
+
+        <label>Live URL</label>
+
+        <input
+          type="url"
+          formControlName="liveUrl"
+          placeholder="https://yourproject.com">
+
+      </div>
+
+      <!-- Image URL -->
+
+      <div class="form-group">
+
+        <label>Image URL</label>
+
+        <input
+          type="text"
+          formControlName="imageUrl"
+          placeholder="https://imageurl.com/image.png">
+
+      </div>
+
+      <!-- Featured -->
+
+      <div class="checkbox-group">
+
+        <input
+          id="featured"
+          type="checkbox"
+          formControlName="isFeatured">
+
+        <label for="featured">
+
+          Featured Project
+
+        </label>
+
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="isSubmitting">
+
+        {{ isSubmitting ? 'Saving...' : 'Save Project' }}
+
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
