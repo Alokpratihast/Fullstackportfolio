@@ -1,0 +1,9 @@
+{
+  "outputDirectory": "dist/alokportfolio-admin/browser",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
