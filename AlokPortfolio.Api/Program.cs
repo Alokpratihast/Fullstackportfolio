@@ -82,8 +82,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("FrontendPolicy", policy =>
     {
         policy.WithOrigins(
-            "http://localhost:4200", // Angular Admin
-            "http://localhost:3000"  // Next.js Portfolio
+            "http://localhost:4200",
+            "http://localhost:3000",
+            "https://fullstackportfolio-puwgjaqtx-alok-pratihasts-projects.vercel.app"
         )
         .AllowAnyHeader()
         .AllowAnyMethod();
