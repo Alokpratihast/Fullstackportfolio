@@ -1,68 +1,48 @@
-"use client";
+import HeroButtons from "./HeroButtons";
+import HeroContent from "./HeroContent";
+import HeroImage from "./HeroImage";
+import HeroSocial from "./HeroSocial";
 
-import { useEffect, useState } from "react";
-import { Mail } from "lucide-react";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
-  FaFacebook,
-  FaXTwitter,
-} from "react-icons/fa6";
-import socialLinkService from "@/services/social-link.service";
-import { SocialLink } from "@/types/social-link";
-
-const iconMap: Record<string, React.ElementType> = {
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
-  FaFacebook,
-  FaXTwitter,
-  Mail,
-};
-
-export default function HeroSocial() {
-  const [links, setLinks] = useState<SocialLink[]>([]);
-
-  useEffect(() => {
-    const fetchLinks = async () => {
-      try {
-        const data = await socialLinkService.getSocialLinks();
-        setLinks(data.sort((a, b) => a.displayOrder - b.displayOrder));
-      } catch (error) {
-        console.error("Failed to load social links", error);
-      }
-    };
-
-    fetchLinks();
-  }, []);
-
+export default function Hero() {
   return (
-    <div className="flex items-center gap-5">
-      <span className="font-mono text-xs uppercase tracking-widest text-slate-600">
-        Connect
-      </span>
+    <section
+      id="home"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#0A0F1D] pt-24"
+    >
+      {/* Background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* faint structural grid — reinforces the "systems/API" identity */}
+        <div
+          className="absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage:
+              "linear-gradient(#38BDF8 1px, transparent 1px), linear-gradient(90deg, #38BDF8 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+          }}
+        />
 
-      <span className="h-px w-8 bg-slate-800" />
+        {/* single glow, not four competing ones */}
+        <div className="absolute -right-40 top-1/2 h-[560px] w-[560px] -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[160px]" />
 
-      {links.map((link) => {
-        const Icon = iconMap[link.icon];
+        {/* base gradient wash for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1D] via-[#0A0F1D] to-[#0B1120]" />
+      </div>
 
-        if (!Icon) return null;
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-6 py-20 lg:grid-cols-[1.15fr_0.85fr]">
+        <div>
+          <HeroContent />
 
-        return (
-          <a
-            key={link.id}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={link.platform}
-            className="text-slate-500 transition-colors duration-300 hover:text-cyan-400"
-          >
-            <Icon size={20} />
-          </a>
-        );
-      })}
-    </div>
+          <div className="mt-10">
+            <HeroButtons />
+          </div>
+
+          <div className="mt-10">
+            <HeroSocial />
+          </div>
+        </div>
+
+        <HeroImage />
+      </div>
+    </section>
   );
 }
