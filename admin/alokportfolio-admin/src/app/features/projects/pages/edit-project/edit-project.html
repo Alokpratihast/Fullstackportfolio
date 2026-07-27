@@ -4,130 +4,124 @@
 
     <h2>Edit Project</h2>
 
-    @if (isLoading) {
+    <form
+      [formGroup]="projectForm"
+      (ngSubmit)="onSubmit()">
 
-      <p>Loading project...</p>
+      <!-- Title -->
+      <div class="form-group">
 
-    } @else {
+        <label>Project Title</label>
 
-      <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <input
+          type="text"
+          formControlName="title"
+          placeholder="Enter project title">
 
-        <!-- Title -->
-        <div class="form-group">
+        @if(projectForm.controls.title.touched &&
+        projectForm.controls.title.invalid){
 
-          <label>Project Title</label>
+          <small class="error">
+            Project title is required.
+          </small>
 
-          <input
-            type="text"
-            formControlName="title"
-            placeholder="Enter project title">
+        }
 
-          @if (projectForm.controls.title.touched &&
-              projectForm.controls.title.invalid) {
+      </div>
 
-            <small class="error">
-              Project title is required.
-            </small>
+      <!-- Description -->
+      <div class="form-group">
 
-          }
+        <label>Description</label>
 
-        </div>
+        <textarea
+          rows="5"
+          formControlName="description"
+          placeholder="Enter description">
+        </textarea>
 
-        <!-- Description -->
-        <div class="form-group">
+        @if(projectForm.controls.description.touched &&
+        projectForm.controls.description.invalid){
 
-          <label>Description</label>
+          <small class="error">
+            Description is required.
+          </small>
 
-          <textarea
-            rows="5"
-            formControlName="description"
-            placeholder="Enter description">
-          </textarea>
+        }
 
-          @if (projectForm.controls.description.touched &&
-              projectForm.controls.description.invalid) {
+      </div>
 
-            <small class="error">
-              Description is required.
-            </small>
+      <!-- Technologies -->
+      <div class="form-group">
 
-          }
+        <label>Technologies</label>
 
-        </div>
+        <input
+          type="text"
+          formControlName="technologies"
+          placeholder="Angular, .NET, SQL Server">
 
-        <!-- Technologies -->
-        <div class="form-group">
+      </div>
 
-          <label>Technologies</label>
+      <!-- Github -->
+      <div class="form-group">
 
-          <input
-            type="text"
-            formControlName="technologies"
-            placeholder="Angular, .NET, SQL Server">
+        <label>Github URL</label>
 
-        </div>
+        <input
+          type="url"
+          formControlName="githubUrl"
+          placeholder="https://github.com/...">
 
-        <!-- Github -->
-        <div class="form-group">
+      </div>
 
-          <label>Github URL</label>
+      <!-- Live URL -->
+      <div class="form-group">
 
-          <input
-            type="url"
-            formControlName="githubUrl"
-            placeholder="https://github.com/...">
+        <label>Live URL</label>
 
-        </div>
+        <input
+          type="url"
+          formControlName="liveUrl"
+          placeholder="https://yourproject.com">
 
-        <!-- Live URL -->
-        <div class="form-group">
+      </div>
 
-          <label>Live URL</label>
+      <!-- Image URL -->
+      <div class="form-group">
 
-          <input
-            type="url"
-            formControlName="liveUrl"
-            placeholder="https://yourproject.com">
+        <label>Image URL</label>
 
-        </div>
+        <input
+          type="text"
+          formControlName="imageUrl"
+          placeholder="https://imageurl.com/image.png">
 
-        <!-- Image URL -->
-        <div class="form-group">
+      </div>
 
-          <label>Image URL</label>
+      <!-- Featured -->
+      <div class="checkbox-group">
 
-          <input
-            type="text"
-            formControlName="imageUrl"
-            placeholder="https://imageurl.com/image.png">
+        <input
+          id="featured"
+          type="checkbox"
+          formControlName="isFeatured">
 
-        </div>
+        <label for="featured">
+          Featured Project
+        </label>
 
-        <!-- Featured -->
-        <div class="checkbox-group">
+      </div>
 
-          <input
-            id="featured"
-            type="checkbox"
-            formControlName="isFeatured">
+      <button
+        type="submit"
+        [disabled]="isSubmitting">
 
-          <label for="featured">
-            Featured Project
-          </label>
+        {{ isSubmitting ? 'Updating...' : 'Update Project' }}
 
-        </div>
+      </button>
 
-        <button
-          type="submit"
-          [disabled]="isSubmitting">
-
-          {{ isSubmitting ? 'Updating...' : 'Update Project' }}
-
-        </button>
-
-      </form>
-
-    }
+    </form>
 
   </div>
 

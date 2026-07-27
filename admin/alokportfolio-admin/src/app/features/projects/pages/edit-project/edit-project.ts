@@ -30,24 +30,29 @@ export class EditProjectComponent implements OnInit {
 
   projectId = 0;
 
-  isLoading = false;
   isSubmitting = false;
 
   projectForm = this.fb.group({
+
     title: ['', Validators.required],
+
     description: ['', Validators.required],
+
     imageUrl: [''],
+
     githubUrl: [''],
+
     liveUrl: [''],
+
     technologies: ['', Validators.required],
+
     isFeatured: [false]
+
   });
 
   ngOnInit(): void {
 
     this.projectId = Number(this.route.snapshot.paramMap.get('id'));
-
-    console.log('Project Id:', this.projectId);
 
     this.loadProject();
 
@@ -55,17 +60,12 @@ export class EditProjectComponent implements OnInit {
 
   loadProject(): void {
 
-    this.isLoading = true;
-
-    console.log('Loading project...');
-
     this.projectService.getProject(this.projectId).subscribe({
 
       next: (response) => {
 
-        console.log('API Response:', response);
-
         this.projectForm.patchValue({
+
           title: response.data.title,
           description: response.data.description,
           imageUrl: response.data.imageUrl,
@@ -73,21 +73,16 @@ export class EditProjectComponent implements OnInit {
           liveUrl: response.data.liveUrl,
           technologies: response.data.technologies,
           isFeatured: response.data.isFeatured
+
         });
-
-        console.log('Form Value:', this.projectForm.value);
-
-        this.isLoading = false;
-
-        console.log('Loading Finished');
 
       },
 
       error: (error: HttpErrorResponse) => {
 
-        console.error('API Error:', error);
+        console.error(error);
 
-        this.isLoading = false;
+        alert('Failed to load project.');
 
       }
 
@@ -108,17 +103,16 @@ export class EditProjectComponent implements OnInit {
     this.isSubmitting = true;
 
     const project: UpdateProject = {
-      id: this.projectId,
-      ...this.projectForm.getRawValue()
-    } as UpdateProject;
 
-    console.log('Updating Project:', project);
+      id: this.projectId,
+
+      ...this.projectForm.value as Omit<UpdateProject, 'id'>
+
+    };
 
     this.projectService.updateProject(this.projectId, project).subscribe({
 
       next: () => {
-
-        this.isSubmitting = false;
 
         alert('Project updated successfully.');
 
@@ -128,7 +122,9 @@ export class EditProjectComponent implements OnInit {
 
       error: (error: HttpErrorResponse) => {
 
-        console.error('Update Error:', error);
+        console.error(error);
+
+        alert('Failed to update project.');
 
         this.isSubmitting = false;
 
