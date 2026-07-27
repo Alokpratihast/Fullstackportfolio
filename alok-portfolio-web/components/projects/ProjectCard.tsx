@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { ExternalLink, Star } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
@@ -7,10 +10,17 @@ interface ProjectCardProps {
   project: Project;
 }
 
+const DEFAULT_IMAGE =
+  "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80";
+
 export default function ProjectCard({ project }: ProjectCardProps) {
   const technologies = project.technologies
     .split(",")
     .map((tech) => tech.trim());
+
+  const [imageSrc, setImageSrc] = useState(
+    project.imageUrl || DEFAULT_IMAGE
+  );
 
   return (
     <div className="group overflow-hidden rounded-xl border border-slate-800 bg-slate-900/40 transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-400/30 hover:shadow-2xl hover:shadow-cyan-500/5">
@@ -34,10 +44,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {/* Image */}
       <div className="relative h-52 overflow-hidden">
         <Image
-          src={project.imageUrl}
+          src={imageSrc}
           alt={project.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
+          onError={() => setImageSrc(DEFAULT_IMAGE)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
       </div>
@@ -50,7 +61,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {project.description}
         </p>
 
-        {/* Tech as code chips */}
         <div className="mt-5 flex flex-wrap gap-1.5">
           {technologies.map((tech) => (
             <span
@@ -62,7 +72,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
 
-        {/* Actions */}
         <div className="mt-6 flex items-center gap-3">
           <a
             href={project.githubUrl}
@@ -80,7 +89,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 transition-colors duration-300 hover:bg-cyan-400"
           >
-            Live demo
+            Live Demo
             <ExternalLink size={16} />
           </a>
         </div>
