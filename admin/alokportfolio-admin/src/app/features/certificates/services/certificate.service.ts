@@ -17,7 +17,7 @@ export class CertificateService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly apiUrl = 'https://localhost:7107/api/certificates';
+  private readonly apiUrl = 'https://fullstackportfolio-0yl8.onrender.com/api/certificates'
 
   getCertificates(): Observable<ApiResponse<Certificate[]>> {
 

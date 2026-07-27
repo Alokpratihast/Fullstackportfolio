@@ -17,7 +17,7 @@ export class SkillService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly apiUrl = 'https://localhost:7107/api/skills';
+  private readonly apiUrl = 'https://fullstackportfolio-0yl8.onrender.com/api/skills';
 
   // ============================
   // Get All Skills

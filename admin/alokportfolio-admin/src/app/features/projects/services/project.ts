@@ -17,7 +17,7 @@ export class ProjectService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly apiUrl = 'https://localhost:7107/api/projects';
+  private readonly apiUrl = "https://fullstackportfolio-0yl8.onrender.com/api/projects";
 
   // ============================
   // Get All Projects

@@ -17,7 +17,7 @@ export class EducationService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly apiUrl = 'https://localhost:7107/api/educations';
+  private readonly apiUrl = 'https://fullstackportfolio-0yl8.onrender.com/api/educations';
 
   getEducations(): Observable<ApiResponse<Education[]>> {
 

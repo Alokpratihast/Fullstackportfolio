@@ -17,7 +17,7 @@ export class ExperienceService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly apiUrl = 'https://localhost:7107/api/experiences';
+  private readonly apiUrl = 'https://fullstackportfolio-0yl8.onrender.com/api/experiences';
 
   // ============================
   // Get All Experiences
