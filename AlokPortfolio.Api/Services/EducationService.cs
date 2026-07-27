@@ -39,6 +39,14 @@ public class EducationService : IEducationService
     {
         var education = _mapper.Map<Education>(dto);
 
+        education.StartDate = DateTime.SpecifyKind(
+            education.StartDate,
+            DateTimeKind.Utc);
+
+        education.EndDate = DateTime.SpecifyKind(
+            education.EndDate,
+            DateTimeKind.Utc);
+
         await _repository.AddAsync(education);
 
         return _mapper.Map<EducationResponseDto>(education);
@@ -52,6 +60,14 @@ public class EducationService : IEducationService
             return false;
 
         _mapper.Map(dto, education);
+
+        education.StartDate = DateTime.SpecifyKind(
+    education.StartDate,
+    DateTimeKind.Utc);
+
+        education.EndDate = DateTime.SpecifyKind(
+            education.EndDate,
+            DateTimeKind.Utc);
 
         await _repository.UpdateAsync(education);
 
