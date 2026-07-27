@@ -66,7 +66,7 @@ export class EditProjectComponent implements OnInit {
     this.projectService.getProject(this.projectId).subscribe({
 
       next: (response) => {
-
+      
         this.projectForm.patchValue({
 
           title: response.data.title,
