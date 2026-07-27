@@ -34,26 +34,20 @@ export class EditProjectComponent implements OnInit {
   isSubmitting = false;
 
   projectForm = this.fb.group({
-
     title: ['', Validators.required],
-
     description: ['', Validators.required],
-
     imageUrl: [''],
-
     githubUrl: [''],
-
     liveUrl: [''],
-
     technologies: ['', Validators.required],
-
     isFeatured: [false]
-
   });
 
   ngOnInit(): void {
 
     this.projectId = Number(this.route.snapshot.paramMap.get('id'));
+
+    console.log('Project Id:', this.projectId);
 
     this.loadProject();
 
@@ -63,12 +57,15 @@ export class EditProjectComponent implements OnInit {
 
     this.isLoading = true;
 
+    console.log('Loading project...');
+
     this.projectService.getProject(this.projectId).subscribe({
 
       next: (response) => {
-      
-        this.projectForm.patchValue({
 
+        console.log('API Response:', response);
+
+        this.projectForm.patchValue({
           title: response.data.title,
           description: response.data.description,
           imageUrl: response.data.imageUrl,
@@ -76,16 +73,19 @@ export class EditProjectComponent implements OnInit {
           liveUrl: response.data.liveUrl,
           technologies: response.data.technologies,
           isFeatured: response.data.isFeatured
-
         });
 
+        console.log('Form Value:', this.projectForm.value);
+
         this.isLoading = false;
+
+        console.log('Loading Finished');
 
       },
 
       error: (error: HttpErrorResponse) => {
 
-        console.error(error);
+        console.error('API Error:', error);
 
         this.isLoading = false;
 
@@ -108,16 +108,17 @@ export class EditProjectComponent implements OnInit {
     this.isSubmitting = true;
 
     const project: UpdateProject = {
-
       id: this.projectId,
-
       ...this.projectForm.getRawValue()
-
     } as UpdateProject;
+
+    console.log('Updating Project:', project);
 
     this.projectService.updateProject(this.projectId, project).subscribe({
 
       next: () => {
+
+        this.isSubmitting = false;
 
         alert('Project updated successfully.');
 
@@ -127,7 +128,7 @@ export class EditProjectComponent implements OnInit {
 
       error: (error: HttpErrorResponse) => {
 
-        console.error(error);
+        console.error('Update Error:', error);
 
         this.isSubmitting = false;
 

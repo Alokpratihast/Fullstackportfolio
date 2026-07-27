@@ -22,8 +22,8 @@
             formControlName="title"
             placeholder="Enter project title">
 
-          @if(projectForm.controls.title.touched &&
-          projectForm.controls.title.invalid){
+          @if (projectForm.controls.title.touched &&
+              projectForm.controls.title.invalid) {
 
             <small class="error">
               Project title is required.
@@ -44,8 +44,8 @@
             placeholder="Enter description">
           </textarea>
 
-          @if(projectForm.controls.description.touched &&
-          projectForm.controls.description.invalid){
+          @if (projectForm.controls.description.touched &&
+              projectForm.controls.description.invalid) {
 
             <small class="error">
               Description is required.
