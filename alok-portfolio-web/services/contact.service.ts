@@ -10,7 +10,7 @@ class ContactService {
     message: ContactMessageCreate
   ): Promise<ContactMessageResponse> {
     const response = await api.post<Apiresponse<ContactMessageResponse>>(
-      "/api/contactmessages",
+      "/contactmessages",
       message
     );
 

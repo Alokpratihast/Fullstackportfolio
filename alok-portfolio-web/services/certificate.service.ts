@@ -5,7 +5,7 @@ import { Certificate } from "@/types/certificate";
 class CertificateService {
   async getCertificates(): Promise<Certificate[]> {
     const response = await api.get<Apiresponse<Certificate[]>>(
-      "/api/certificates"
+      "/certificates"
     );
 
     return response.data.data;

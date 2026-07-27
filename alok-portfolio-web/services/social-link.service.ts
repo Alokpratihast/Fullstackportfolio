@@ -5,7 +5,7 @@ import { SocialLink } from "@/types/social-link";
 class SocialLinkService {
   async getSocialLinks(): Promise<SocialLink[]> {
     const response = await api.get<Apiresponse<SocialLink[]>>(
-      "/api/sociallinks"
+      "/sociallinks"
     );
 
     return response.data.data;

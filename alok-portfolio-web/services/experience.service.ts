@@ -5,7 +5,7 @@ import { experience } from "@/types/experience";
 class ExperienceService {
   async getExperiences(): Promise<experience[]> {
     const response = await api.get<Apiresponse<experience[]>>(
-      "/api/experiences"
+      "/experiences"
     );
 
     return response.data.data;

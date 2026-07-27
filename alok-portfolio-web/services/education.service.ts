@@ -5,7 +5,7 @@ import { education } from "@/types/education";
 class EducationService {
   async getEducations(): Promise<education[]> {
     const response = await api.get<Apiresponse<education[]>>(
-      "/api/educations"
+      "/educations"
     );
 
     return response.data.data;

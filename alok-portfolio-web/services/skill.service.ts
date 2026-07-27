@@ -4,7 +4,7 @@ import { Skill } from "@/types/skill";
 
 class SkillService {
   async getSkills(): Promise<Skill[]> {
-    const response = await api.get<Apiresponse<Skill[]>>("/api/skills");
+    const response = await api.get<Apiresponse<Skill[]>>("/skills");
 
     return response.data.data;
   }

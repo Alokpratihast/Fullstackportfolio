@@ -4,7 +4,7 @@ import { Project } from "@/types/project";
 
 class ProjectService {
   async getProjects(): Promise<Project[]> {
-    const response = await api.get<Apiresponse<Project[]>>("/api/projects");
+    const response = await api.get<Apiresponse<Project[]>>("/projects");
 
     return response.data.data;
   }
