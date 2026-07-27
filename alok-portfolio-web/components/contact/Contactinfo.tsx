@@ -28,7 +28,7 @@ export default function ContactInfo() {
               href="mailto:your@email.com"
               className="text-sm text-slate-200 transition-colors hover:text-cyan-400"
             >
-              your@email.com
+              alokpratihast05@email.com
             </a>
           </div>
         </div>

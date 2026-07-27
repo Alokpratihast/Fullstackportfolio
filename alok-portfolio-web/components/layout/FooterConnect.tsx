@@ -11,7 +11,7 @@ export default function FooterConnect() {
         href="mailto:your@email.com"
         className="mt-4 block text-sm text-slate-400 transition-colors duration-300 hover:text-cyan-400"
       >
-        your@email.com
+        alokpratihast05@email.com
       </a>
 
       <div className="mt-4">
