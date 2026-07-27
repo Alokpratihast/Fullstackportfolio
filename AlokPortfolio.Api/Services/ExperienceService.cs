@@ -39,6 +39,18 @@ public class ExperienceService : IExperienceService
     {
         var experience = _mapper.Map<Experience>(dto);
 
+        // Convert DateTime to UTC
+        experience.StartDate = DateTime.SpecifyKind(
+            experience.StartDate,
+            DateTimeKind.Utc);
+
+        if (experience.EndDate.HasValue)
+        {
+            experience.EndDate = DateTime.SpecifyKind(
+                experience.EndDate.Value,
+                DateTimeKind.Utc);
+        }
+
         await _repository.AddAsync(experience);
 
         return _mapper.Map<ExperienceResponseDto>(experience);
@@ -53,6 +65,18 @@ public class ExperienceService : IExperienceService
 
         _mapper.Map(dto, experience);
 
+        experience.StartDate = DateTime.SpecifyKind(
+    experience.StartDate,
+    DateTimeKind.Utc);
+
+        if (experience.EndDate.HasValue)
+        {
+            experience.EndDate = DateTime.SpecifyKind(
+                experience.EndDate.Value,
+                DateTimeKind.Utc);
+        }
+        Console.WriteLine($"StartDate: {experience.StartDate}, Kind: {experience.StartDate.Kind}");
+        Console.WriteLine($"EndDate: {experience.EndDate}, Kind: {experience.EndDate?.Kind}");
         await _repository.UpdateAsync(experience);
 
         return true;
