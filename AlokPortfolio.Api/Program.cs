@@ -27,8 +27,16 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseNpgsql(
-        builder.Configuration.GetConnectionString("DefaultConnection"));
+    if (builder.Environment.IsDevelopment())
+    {
+        options.UseSqlServer(
+            builder.Configuration.GetConnectionString("SqlServerConnection"));
+    }
+    else
+    {
+        options.UseNpgsql(
+            builder.Configuration.GetConnectionString("PostgresConnection"));
+    }
 });
 
 

@@ -36,6 +36,8 @@ export default function Hero() {
             <HeroButtons />
           </div>
 
+          
+
           <div className="mt-10">
             <HeroSocial />
           </div>
