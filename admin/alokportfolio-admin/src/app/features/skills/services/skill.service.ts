@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { ApiResponse } from '../../../core/models/api-response.model';
+import { environment } from '../../../../environments/environment';
 
 import {
   Skill,
@@ -17,7 +18,7 @@ export class SkillService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly apiUrl = 'https://fullstackportfolio-0yl8.onrender.com/api/skills';
+ private readonly apiUrl = `${environment.apiUrl}/certificates/skills`;
 
   // ============================
   // Get All Skills

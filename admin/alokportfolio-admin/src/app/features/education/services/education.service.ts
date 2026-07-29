@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { ApiResponse } from '../../../core/models/api-response.model';
+import { environment } from '../../../../environments/environment';
 
 import {
   Education,
@@ -17,7 +18,7 @@ export class EducationService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly apiUrl = 'https://fullstackportfolio-0yl8.onrender.com/api/educations';
+  private readonly apiUrl = `${environment.apiUrl}/education`;
 
   getEducations(): Observable<ApiResponse<Education[]>> {
 
